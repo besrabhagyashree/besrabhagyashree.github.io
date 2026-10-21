@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bhagyashree Besra</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Bhagyashree Besra — AI/ML researcher: computer vision, medical imaging, biometrics, GenAI. Open to Fall 2027 PhD positions and AI/ML research roles.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one scholarly column with a hematoxylin/eosin stain palette; skill groups hang their labels
+   in a left gutter; hero carries an illustrative vein-pattern figure. */
+:root {
+  --bg: #f6f7f8;
+  --surface: #ffffff;
+  --fg: #181a24;
+  --muted: #5d6070;
+  --rule: #dcdde4;
+  --hema: #34328a;      /* hematoxylin: primary accent */
+  --eosin: #b83d70;     /* eosin: secondary accent, used sparingly */
+  --tint: #ecebf7;
+  --font-display: "Spectral", "Iowan Old Style", Georgia, serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121319; --surface: #1a1c24; --fg: #e8e8f0; --muted: #a0a2b3; --rule: #2d2f3b;
+    --hema: #a9a6f2; --eosin: #f08ab3; --tint: #23233a; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121319; --surface: #1a1c24; --fg: #e8e8f0; --muted: #a0a2b3; --rule: #2d2f3b;
+  --hema: #a9a6f2; --eosin: #f08ab3; --tint: #23233a; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 400 1rem/1.65 var(--font-body);
+}
+.wrap {
+  max-width: 50rem;
+  margin: 0 auto;
+  padding-block: 3.5rem 4rem;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid;
+  gap: 3.5rem;
+}
+a { color: var(--hema); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--eosin); outline-offset: 3px; border-radius: 2px; }
+h1, h2 { font-family: var(--font-display); font-weight: 600; text-wrap: balance; margin: 0; }
+p { margin: 0; }
+
+/* ---------- hero ---------- */
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) 13rem; gap: 2rem; align-items: start; }
+.hero h1 { font-size: clamp(2.4rem, 6vw, 3.4rem); line-height: 1.05; letter-spacing: -0.01em; }
+.role { font-family: var(--font-display); font-style: italic; font-size: 1.3rem; color: var(--muted); margin-top: .5rem; }
+.intro { margin-top: 1.25rem; max-width: 34rem; }
+.status {
+  display: inline-flex; align-items: center; gap: .55rem;
+  margin-top: 1.4rem; padding: .4rem .8rem;
+  background: var(--tint); color: var(--hema);
+  border-radius: 999px; font-size: .9rem; font-weight: 500;
+}
+.status::before { content: ""; width: .5rem; height: .5rem; border-radius: 50%; background: var(--eosin); flex: none; }
+.contact { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1rem; margin-top: 1.25rem; font-size: .95rem; }
+.contact .email { font-family: var(--font-mono); font-size: .9rem; }
+.btn {
+  font: 500 .8rem var(--font-body); letter-spacing: .02em;
+  padding: .35rem .7rem; border-radius: 6px; cursor: pointer;
+  background: transparent; color: var(--fg); border: 1px solid var(--rule);
+}
+.btn:hover { border-color: var(--hema); color: var(--hema); }
+
+figure.veins { margin: 0; }
+figure.veins canvas { width: 100%; max-width: 100%; aspect-ratio: 4 / 5; display: block; border-radius: 4px; background: var(--surface); border: 1px solid var(--rule); }
+figure.veins figcaption { font: 400 .72rem/1.45 var(--font-mono); color: var(--muted); margin-top: .5rem; }
+
+/* ---------- sections ---------- */
+section { display: grid; gap: 1.25rem; }
+.eyebrow {
+  font: 500 .75rem var(--font-mono); text-transform: uppercase; letter-spacing: .12em; color: var(--eosin);
+  display: flex; align-items: center; gap: .75rem;
+}
+.eyebrow::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+section > h2 { font-size: 1.6rem; margin-top: -.5rem; }
+
+.interests { display: flex; flex-wrap: wrap; gap: .5rem; padding: 0; margin: 0; list-style: none; }
+.interests li { padding: .35rem .75rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); font-size: .92rem; }
+
+.skills { display: grid; gap: 1.4rem; margin: 0; }
+.skills > div { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: 1.25rem; padding-top: 1.4rem; border-top: 1px solid var(--rule); }
+.skills > div:first-child { border-top: 0; padding-top: 0; }
+.skills dt { font: 500 .8rem/1.9 var(--font-mono); color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.skills dd { margin: 0; display: flex; flex-wrap: wrap; gap: .4rem; }
+.skills dd span { padding: .2rem .6rem; border-radius: 5px; background: var(--tint); font-size: .9rem; }
+
+footer { border-top: 1px solid var(--rule); padding-top: 1.5rem; font-size: .85rem; color: var(--muted); display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 1.5rem; }
+
+@media (max-width: 640px) {
+  .wrap { padding-block: 2.25rem 3rem; gap: 2.75rem; }
+  .hero { grid-template-columns: minmax(0, 1fr); }
+  figure.veins { max-width: 15rem; }
+  .skills > div { grid-template-columns: minmax(0, 1fr); gap: .5rem; }
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <header class="hero">
+    <div>
+      <h1>Bhagyashree Besra</h1>
+      <p class="role">AI/ML researcher · computer vision, medical imaging &amp; GenAI</p>
+      <p class="intro">
+        I build machine-learning systems on real image, health and agricultural data,
+        from dataset building and modelling through evaluation and deployment.
+        My grounding is in computer vision and biometrics, now paired with the current GenAI stack: LLMs, RAG and agents.
+      </p>
+      <div class="status">Open to Fall 2027 PhD positions and AI/ML research roles</div>
+      <div class="contact">
+        <span class="email" id="email">bhagyashreebesra@gmail.com</span>
+        <button class="btn" id="copy-email" type="button">Copy email</button>
+        <a href="mailto:bhagyashreebesra@gmail.com">Send an email</a>
+        <a href="https://github.com/besrabhagyashree">GitHub</a>
+      </div>
+    </div>
+    <figure class="veins" aria-hidden="true">
+      <canvas id="veins" width="416" height="520"></canvas>
+      <figcaption>fig. 1 — finger-vein pattern (illustrative)</figcaption>
+    </figure>
+  </header>
+
+  <section aria-labelledby="h-interests">
+    <div class="eyebrow">Focus areas</div>
+    <h2 id="h-interests">What I work on</h2>
+    <ul class="interests">
+      <li>Medical &amp; forensic image analysis</li>
+      <li>Machine learning for health</li>
+      <li>Biometrics &amp; identity</li>
+      <li>Computer vision</li>
+      <li>Bioinformatics &amp; computational biology</li>
+      <li>LLMs, RAG &amp; LLM evaluation</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="h-skills">
+    <div class="eyebrow">Technical skills</div>
+    <h2 id="h-skills">Toolkit</h2>
+    <dl class="skills">
+      <div><dt>GenAI &amp; LLMs</dt><dd><span>LLMs</span><span>RAG</span><span>LangChain</span><span>LlamaIndex</span><span>Hugging Face Transformers</span><span>Fine-tuning</span><span>LLM evaluation</span><span>AI agents</span></dd></div>
+      <div><dt>ML &amp; vision</dt><dd><span>Machine learning</span><span>Computer vision</span><span>Image processing &amp; analysis</span><span>Biometrics</span><span>Forensic image analysis</span><span>Data mining</span></dd></div>
+      <div><dt>Frameworks</dt><dd><span>TensorFlow</span><span>Keras</span><span>Jupyter</span><span>Anaconda</span><span>MATLAB</span><span>Octave</span><span>Terrier (IR)</span></dd></div>
+      <div><dt>Data &amp; science</dt><dd><span>Statistical modelling</span><span>Mixed-effect models</span><span>GIS</span><span>Bioinformatics</span><span>Big data analysis</span><span>ODK</span></dd></div>
+      <div><dt>Languages</dt><dd><span>Python</span><span>R</span><span>C</span><span>C++</span><span>Java</span><span>SQL</span><span>PL/SQL</span><span>TypeScript</span><span>LaTeX</span></dd></div>
+      <div><dt>Web &amp; full-stack</dt><dd><span>React</span><span>Next.js</span><span>Node.js</span><span>HTML / CSS / JavaScript</span></dd></div>
+      <div><dt>Databases &amp; infra</dt><dd><span>MongoDB</span><span>MySQL</span><span>Oracle</span><span>Cassandra</span><span>ScyllaDB</span><span>Docker</span><span>Kubernetes</span><span>Linux</span></dd></div>
+    </dl>
+  </section>
+
+  <footer>
+    <span>Bhagyashree Besra · bhagyashreebesra@gmail.com</span>
+    <span>Full CV available on request</span>
+  </footer>
+</main>
+
+<script>
+// Copy email; fall back to selecting the text if the clipboard is refused.
+(function () {
+  var btn = document.getElementById('copy-email');
+  var el = document.getElementById('email');
+  function selectText() {
+    var r = document.createRange(); r.selectNodeContents(el);
+    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+  }
+  btn.addEventListener('click', function () {
+    var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy email'; }, 1800); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(el.textContent).then(done, function () { selectText(); btn.textContent = 'Selected'; });
+    } else { selectText(); btn.textContent = 'Selected'; }
+  });
+})();
+
+// Illustrative finger-vein figure: seeded branching walks, drawn once (static).
+(function () {
+  var c = document.getElementById('veins');
+  if (!c || !c.getContext) return;
+  var ctx = c.getContext('2d');
+  var seed = 20170517;
+  function rnd() { seed = (seed * 1664525 + 1013904223) % 4294967296; return seed / 4294967296; }
+
+  function draw() {
+    var cs = getComputedStyle(document.documentElement);
+    var ink = cs.getPropertyValue('--hema').trim();
+    var pink = cs.getPropertyValue('--eosin').trim();
+    var bg = cs.getPropertyValue('--surface').trim();
+    var W = c.width, H = c.height;
+    seed = 20170517;
+    ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+
+    // faint finger outline
+    ctx.strokeStyle = ink; ctx.globalAlpha = .18; ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(W * .22, H); ctx.lineTo(W * .22, H * .2);
+    ctx.quadraticCurveTo(W * .22, H * .04, W * .5, H * .04);
+    ctx.quadraticCurveTo(W * .78, H * .04, W * .78, H * .2);
+    ctx.lineTo(W * .78, H); ctx.stroke();
+
+    function branch(x, y, ang, width, len, depth) {
+      ctx.lineCap = 'round';
+      for (var i = 0; i < len; i++) {
+        var nx = x + Math.cos(ang) * 6, ny = y + Math.sin(ang) * 6;
+        ang += (rnd() - .5) * .35;
+        // keep inside the finger
+        if (nx < W * .26) ang += .12; if (nx > W * .74) ang -= .12;
+        if (ny < H * .12) break;
+        ctx.globalAlpha = Math.min(.85, .25 + width / 6);
+        ctx.strokeStyle = depth === 0 ? ink : (rnd() < .08 ? pink : ink);
+        ctx.lineWidth = width;
+        ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(nx, ny); ctx.stroke();
+        x = nx; y = ny;
+        if (depth < 3 && rnd() < .055) {
+          branch(x, y, ang + (rnd() < .5 ? -1 : 1) * (.45 + rnd() * .5), Math.max(.8, width * .6), len * .5, depth + 1);
+        }
+        width = Math.max(.7, width * .995);
+      }
+    }
+    var starts = [.36, .5, .63];
+    for (var k = 0; k < starts.length; k++) {
+      branch(W * starts[k], H * 1.02, -Math.PI / 2 + (rnd() - .5) * .2, 4.2, 70, 0);
+    }
+    ctx.globalAlpha = 1;
+  }
+  draw();
+  try {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', draw);
+    new MutationObserver(draw).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  } catch (e) {}
+})();
+</script>
+</body>
+</html>
