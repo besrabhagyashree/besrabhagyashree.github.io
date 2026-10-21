@@ -155,6 +155,28 @@ section.block + section.block .inner { border-top: 1px solid var(--rule); }
 .method h3 { font-weight: 500; font-size: 1.3rem; }
 .method p { color: var(--muted); font-size: .95rem; }
 
+/* featured build */
+.build { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); background: var(--surface); border: 1px solid var(--rule); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); }
+.build-main { padding: 2rem; display: grid; gap: 1.5rem; align-content: start; }
+.build-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem 1rem; }
+.build h3 { font-weight: 500; font-size: 1.6rem; line-height: 1.2; }
+.live { display: inline-flex; align-items: center; gap: .55rem; padding: .3rem .75rem .3rem .65rem; border-radius: 999px; background: var(--eosin-soft); font-size: .82rem; font-weight: 500; }
+.build-lead { color: var(--muted); max-width: 38rem; }
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin: 0; padding-block: 1.25rem; border-block: 1px solid var(--rule); }
+.stats dt { font: 300 2.3rem/1 var(--font-display); color: var(--hema); font-variant-numeric: tabular-nums; }
+.stats dd { margin: .4rem 0 0; font-size: .85rem; color: var(--muted); }
+.features { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem 1.5rem; }
+.features li { position: relative; padding-left: 1.1rem; font-size: .92rem; color: var(--muted); }
+.features li::before { content: ""; position: absolute; left: 0; top: .6em; width: .4rem; height: .4rem; border-radius: 1px; background: var(--hema); }
+.features b { color: var(--fg); font-weight: 500; }
+.build-side { background: var(--hema-soft); padding: 2rem; display: grid; gap: .9rem; align-content: start; }
+.build-side h4 { margin: 0; font: 500 .75rem var(--font-mono); text-transform: uppercase; letter-spacing: .12em; color: var(--muted); }
+.build-side h4 + * { margin-bottom: .6rem; }
+.build-side .chips li { background: var(--surface); }
+.build-side p { font-size: .92rem; color: var(--muted); }
+@media (max-width: 900px) { .build { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 600px) { .features { grid-template-columns: minmax(0, 1fr); } .stats dt { font-size: 1.9rem; } .build-main, .build-side { padding: 1.5rem; } }
+
 /* skills */
 .skills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
 .panel { background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; padding: 1.5rem; display: grid; gap: 1rem; align-content: start; }
@@ -210,6 +232,7 @@ footer .inner { padding-block: 1.75rem; display: flex; flex-wrap: wrap; justify-
     <ul>
       <li class="opt"><a href="#focus">Focus</a></li>
       <li class="opt"><a href="#method">Approach</a></li>
+      <li class="opt"><a href="#build">Build</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -310,6 +333,52 @@ footer .inner { padding-block: 1.75rem; display: flex; flex-wrap: wrap; justify-
       <li><h3>Evaluate</h3><p>Rigorous validation and statistical analysis, plus LLM evaluation for generative systems.</p></li>
       <li><h3>Deploy</h3><p>Ship it as a working app or service with Docker, Kubernetes and a full-stack front end.</p></li>
     </ol>
+  </div>
+</section>
+
+<section class="block" id="build" aria-labelledby="h-build">
+  <div class="inner">
+    <div class="head">
+      <div>
+        <div class="kicker">Featured build</div>
+        <h2 id="h-build">A hostel run on software I built</h2>
+      </div>
+      <p>Designed, built and operated end to end: in daily production use by residents, wardens and staff.</p>
+    </div>
+    <article class="build">
+      <div class="build-main">
+        <div class="build-top">
+          <h3>Raimani Homes operations platform</h3>
+          <span class="live"><span class="dot" aria-hidden="true"></span>In production</span>
+        </div>
+        <p class="build-lead">
+          A complete operations platform for a residential hostel. Residents, wardens, staff and admins each work
+          through a role-aware Telegram assistant backed by a REST API, with background agents that watch the data
+          and act on it without being asked.
+        </p>
+        <dl class="stats">
+          <div><dt>160+</dt><dd>bot commands across four user roles</dd></div>
+          <div><dt>26</dt><dd>scheduled automation agents</dd></div>
+          <div><dt>100+</dt><dd>API and service modules</dd></div>
+        </dl>
+        <ul class="features">
+          <li><b>Enrollment</b> with admin approval, document checks and generated application PDFs</li>
+          <li><b>Attendance</b> windows, streaks, leave tracking and exception handling</li>
+          <li><b>Payments</b>: UPI and cash, invoices, late fees and overdue alerts</li>
+          <li><b>Meals</b> with QR counter check-in, ratings and monthly billing</li>
+          <li><b>Facilities</b>: maintenance workflow with approvals and ratings, plus medicine and stock inventory</li>
+          <li><b>Live floor plans</b> rendered to images server-side with headless Chromium</li>
+          <li><b>Wellbeing screening</b> using a validated stress scale (PSS-10)</li>
+          <li><b>Reliability</b>: self-healing watchdog, health monitoring and daily on-server backups</li>
+        </ul>
+      </div>
+      <div class="build-side">
+        <h4>Stack</h4>
+        <ul class="chips"><li>Python</li><li>Flask</li><li>Gunicorn</li><li>MongoDB</li><li>Telegram Bot API</li><li>REST API</li><li>Headless Chromium</li><li>systemd</li><li>cron</li><li>Linux server ops</li></ul>
+        <h4>What it shows</h4>
+        <p>Turning messy real-world processes into dependable software, then keeping it running for real users.</p>
+      </div>
+    </article>
   </div>
 </section>
 
