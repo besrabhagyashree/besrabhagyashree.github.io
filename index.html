@@ -177,6 +177,21 @@ section.block + section.block .inner { border-top: 1px solid var(--rule); }
 @media (max-width: 900px) { .build { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 600px) { .features { grid-template-columns: minmax(0, 1fr); } .stats dt { font-size: 1.9rem; } .build-main, .build-side { padding: 1.5rem; } }
 
+section[id] { scroll-margin-top: 4.5rem; }
+/* current research */
+.track { margin: 0; padding: 0; list-style: none; display: grid; gap: .9rem; }
+.track li { display: grid; grid-template-columns: 1.6rem minmax(0, 1fr); gap: .2rem .8rem; align-items: start; }
+.track .st { grid-row: span 2; width: 1.6rem; height: 1.6rem; border-radius: 50%; display: grid; place-items: center; font: 600 .75rem var(--font-mono); }
+.track .st.done { background: var(--hema); color: var(--surface); }
+.track .st.run { background: var(--eosin-soft); color: var(--eosin); border: 1.5px solid var(--eosin); }
+.track .st.next { border: 1.5px dashed var(--faint); color: var(--faint); }
+.track b { font-weight: 500; color: var(--fg); font-size: .95rem; }
+.track span.d { display: block; color: var(--muted); font-size: .88rem; }
+.meter { display: block; height: .45rem; border-radius: 999px; background: var(--rule); overflow: hidden; margin-top: .35rem; }
+.meter i { display: block; height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--hema), var(--eosin)); }
+.updated { font: 500 .72rem var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--faint); }
+.links { display: flex; flex-wrap: wrap; gap: .6rem; }
+
 /* skills */
 .skills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
 .panel { background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; padding: 1.5rem; display: grid; gap: 1rem; align-content: start; }
@@ -232,6 +247,7 @@ footer .inner { padding-block: 1.75rem; display: flex; flex-wrap: wrap; justify-
     <ul>
       <li class="opt"><a href="#focus">Focus</a></li>
       <li class="opt"><a href="#method">Approach</a></li>
+      <li class="opt"><a href="#research">Research</a></li>
       <li class="opt"><a href="#build">Build</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -337,6 +353,64 @@ footer .inner { padding-block: 1.75rem; display: flex; flex-wrap: wrap; justify-
       <li><h3>Evaluate</h3><p>Rigorous validation and statistical analysis, plus LLM evaluation for generative systems.</p></li>
       <li><h3>Deploy</h3><p>Ship it as a working app or service with Docker, Kubernetes and a full-stack front end.</p></li>
     </ol>
+  </div>
+</section>
+
+<section class="block" id="research" aria-labelledby="h-research">
+  <div class="inner">
+    <div class="head">
+      <div>
+        <div class="kicker">Current research</div>
+        <h2 id="h-research">Does cleaning EEG recorded inside an MRI scanner help a computer read sleep?</h2>
+      </div>
+      <p>An open, pre-registered study on a public sleep EEG-fMRI dataset, built step by step in the open. Every method is a published one, and every change to the plan is dated before results.</p>
+    </div>
+    <article class="build">
+      <div class="build-main">
+        <div class="build-top">
+          <h3>Sleep EEG-fMRI: a preprocessing ablation</h3>
+          <span class="live"><span class="dot" aria-hidden="true"></span>In progress</span>
+        </div>
+        <p class="build-lead">
+          EEG recorded during fMRI is buried under scanner and heartbeat artefacts. This study compares the same
+          sleep recordings raw, filtered only and fully cleaned, and asks how much each step changes how well a
+          model agrees with expert sleep scorers, while checking that cleaning keeps the brain signal it should.
+        </p>
+        <dl class="stats">
+          <div><dt>33</dt><dd>participants, 255 recordings (OpenNeuro ds003768)</dd></div>
+          <div><dt>4</dt><dd>preprocessing arms compared on identical epochs</dd></div>
+          <div><dt>42</dt><dd>automated tests on every change</dd></div>
+        </dl>
+        <ul class="features">
+          <li><b>Artefact removal</b>: scanner gradient and heartbeat by average subtraction, two heartbeat detectors</li>
+          <li><b>Quality control</b> with standard tools: PREP bad channels, Autoreject epochs, INPS, checksums</li>
+          <li><b>All 7 preprocessing steps</b> covered, including an OBS test that was evaluated and not adopted</li>
+          <li><b>Features</b>: spectral band power plus spindles, slow waves and alpha peak (YASA, AASM derivations)</li>
+          <li><b>Evaluation</b>: leave-one-person-out, Cohen's kappa, paired Wilcoxon tests, bootstrap CIs</li>
+          <li><b>Reproducible</b>: pre-registration with 7 dated amendments, corrections log, cited references</li>
+        </ul>
+        <div class="links">
+          <a class="btn" href="https://github.com/besrabhagyashree/sleep-eeg-fmri">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+            Code &amp; results
+          </a>
+          <a class="btn ghost" href="https://github.com/besrabhagyashree/sleep-eeg-fmri/blob/main/studies/01-preprocessing-ablation/PREREGISTRATION.md">Pre-registration</a>
+        </div>
+      </div>
+      <div class="build-side">
+        <h4>Progress</h4>
+        <ol class="track">
+          <li><span class="st done">✓</span><b>Plan pre-registered</b><span class="d">Hypotheses, exclusions and tests fixed before results</span></li>
+          <li><span class="st done">✓</span><b>Pipeline built and validated</b><span class="d">Cleaning, quality control and features, tested on synthetic and real data</span></li>
+          <li><span class="st run">3</span><b>Processing participants</b><span class="d">22 of 33 through cleaning and quality control<span class="meter" aria-hidden="true"><i style="width: 67%"></i></span></span></li>
+          <li><span class="st next">4</span><b>Main comparison</b><span class="d">Leave-one-person-out staging across the four arms</span></li>
+          <li><span class="st next">5</span><b>Write-up and preprint</b><span class="d">Planned for bioRxiv</span></li>
+        </ol>
+        <h4>Stack</h4>
+        <ul class="chips"><li>Python</li><li>MNE-Python</li><li>PyPREP</li><li>Autoreject</li><li>YASA</li><li>scikit-learn</li><li>SciPy</li><li>pytest</li><li>GitHub Actions</li></ul>
+        <p class="updated">Updated 22 Oct 2026</p>
+      </div>
+    </article>
   </div>
 </section>
 
