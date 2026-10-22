@@ -402,13 +402,13 @@ footer .inner { padding-block: 1.75rem; display: flex; flex-wrap: wrap; justify-
         <ol class="track">
           <li><span class="st done">✓</span><b>Plan pre-registered</b><span class="d">Hypotheses, exclusions and tests fixed before results</span></li>
           <li><span class="st done">✓</span><b>Pipeline built and validated</b><span class="d">Cleaning, quality control and features, tested on synthetic and real data</span></li>
-          <li><span class="st run">3</span><b>Processing participants</b><span class="d">23 of 33 through cleaning and quality control<span class="meter" aria-hidden="true"><i style="width: 70%"></i></span></span></li>
+          <li><span class="st run">3</span><b>Processing participants</b><span class="d"><span id="rp-count">23 of 33</span> through cleaning and quality control<span id="rp-excl"></span><span class="meter" aria-hidden="true"><i id="rp-bar" style="width: 70%"></i></span></span></li>
           <li><span class="st next">4</span><b>Main comparison</b><span class="d">Leave-one-person-out staging across the four arms</span></li>
           <li><span class="st next">5</span><b>Write-up and preprint</b><span class="d">Planned for bioRxiv</span></li>
         </ol>
         <h4>Stack</h4>
         <ul class="chips"><li>Python</li><li>MNE-Python</li><li>PyPREP</li><li>Autoreject</li><li>YASA</li><li>scikit-learn</li><li>SciPy</li><li>pytest</li><li>GitHub Actions</li></ul>
-        <p class="updated">Updated 22 Oct 2026</p>
+        <p class="updated" id="rp-updated">Updated 22 Oct 2026</p>
       </div>
     </article>
   </div>
@@ -528,6 +528,24 @@ footer .inner { padding-block: 1.75rem; display: flex; flex-wrap: wrap; justify-
 </footer>
 
 <script>
+// Live research progress: read the participant table and its last commit from the public study repository.
+// The numbers written in the page above are the fallback when GitHub cannot be reached.
+(async function researchProgress() {
+  const repo = "besrabhagyashree/sleep-eeg-fmri", path = "studies/01-preprocessing-ablation/results/participants_table.csv";
+  try {
+    const csv = await (await fetch(`https://raw.githubusercontent.com/${repo}/main/${path}`, { cache: "no-store" })).text();
+    const status = csv.trim().split(String.fromCharCode(10)).slice(1).map(line => (line.trim().split(",")[1] || ""));
+    const total = status.length, done = status.filter(st => st !== "processing").length, excl = status.filter(st => st.startsWith("excluded")).length;
+    if (!total) return;
+    document.getElementById("rp-count").textContent = `${done} of ${total}`;
+    document.getElementById("rp-excl").textContent = excl ? ` (${excl} excluded by the quality rules)` : "";
+    document.getElementById("rp-bar").style.width = `${Math.round(100 * done / total)}%`;
+    const commits = await (await fetch(`https://api.github.com/repos/${repo}/commits?path=${encodeURIComponent(path)}&per_page=1`)).json();
+    const when = new Date(commits[0].commit.committer.date);
+    document.getElementById("rp-updated").textContent = "Updated " + when.toLocaleString("en-GB", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit", timeZone: "Asia/Kolkata" }) + " IST · live";
+  } catch (e) { /* keep the fallback numbers */ }
+})();
+
 // Copy email; fall back to selecting the text if the clipboard is refused.
 (function () {
   var btn = document.getElementById('copy-email');
