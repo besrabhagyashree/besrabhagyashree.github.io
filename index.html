@@ -172,6 +172,7 @@ section.block + section.block .inner { border-top: 1px solid var(--rule); }
 .build-side { background: var(--hema-soft); padding: 2rem; display: grid; gap: .9rem; align-content: start; }
 .build-side h4 { margin: 0; font: 500 .75rem var(--font-mono); text-transform: uppercase; letter-spacing: .12em; color: var(--muted); }
 .build-side h4 + * { margin-bottom: .6rem; }
+.studies-h { margin: 1.4rem 0 .4rem; font: 500 .75rem var(--font-mono); text-transform: uppercase; letter-spacing: .12em; color: var(--muted); }
 .build-side .chips li { background: var(--surface); }
 .build-side p { font-size: .92rem; color: var(--muted); }
 @media (max-width: 900px) { .build { grid-template-columns: minmax(0, 1fr); } }
@@ -363,23 +364,23 @@ footer .inner { padding-block: 1.75rem; display: flex; flex-wrap: wrap; justify-
         <div class="kicker">Current research</div>
         <h2 id="h-research">Does cleaning EEG recorded inside an MRI scanner help a computer read sleep?</h2>
       </div>
-      <p>An open, pre-registered study on a public sleep EEG-fMRI dataset, built step by step in the open. Every method is a published one, and every change to the plan is dated before results.</p>
+      <p>A series of open, pre-registered studies on public sleep EEG-fMRI data, built step by step in the open. Every method is a published one, and every change to a plan is dated before results.</p>
     </div>
     <article class="build">
       <div class="build-main">
         <div class="build-top">
-          <h3>Sleep EEG-fMRI: a preprocessing ablation</h3>
+          <h3>Sleep EEG-fMRI: preprocessing, staging and replication</h3>
           <span class="live"><span class="dot" aria-hidden="true"></span>In progress</span>
         </div>
         <p class="build-lead">
-          EEG recorded during fMRI is buried under scanner and heartbeat artefacts. This study compares the same
+          EEG recorded during fMRI is buried under scanner and heartbeat artefacts. The first study compares the same
           sleep recordings raw, filtered only and fully cleaned, and asks how much each step changes how well a
           model agrees with expert sleep scorers, while checking that cleaning keeps the brain signal it should.
         </p>
         <dl class="stats">
-          <div><dt>33</dt><dd>participants, 255 recordings (OpenNeuro ds003768)</dd></div>
-          <div><dt>4</dt><dd>preprocessing arms compared on identical epochs</dd></div>
-          <div><dt>42</dt><dd>automated tests on every change</dd></div>
+          <div><dt>5</dt><dd>pre-registered studies: 4 complete, 1 in progress</dd></div>
+          <div><dt>3</dt><dd>sites: Penn State, NIH and Geneva (OpenNeuro)</dd></div>
+          <div><dt>67</dt><dd>participants with EEG recorded inside the scanner</dd></div>
         </dl>
         <ul class="features">
           <li><b>Artefact removal</b>: scanner gradient and heartbeat by average subtraction, two heartbeat detectors</li>
@@ -387,7 +388,15 @@ footer .inner { padding-block: 1.75rem; display: flex; flex-wrap: wrap; justify-
           <li><b>All 7 preprocessing steps</b> covered, including an OBS test that was evaluated and not adopted</li>
           <li><b>Features</b>: spectral band power plus spindles, slow waves and alpha peak (YASA, AASM derivations)</li>
           <li><b>Evaluation</b>: leave-one-person-out, Cohen's kappa, paired Wilcoxon tests, bootstrap CIs</li>
-          <li><b>Reproducible</b>: pre-registration with 7 dated amendments, corrections log, cited references</li>
+          <li><b>Reproducible</b>: pre-registrations with dated amendments, corrections logs, verified references</li>
+        </ul>
+        <h4 class="studies-h">Studies so far</h4>
+        <ul class="features">
+          <li><b>01 · Does cleaning matter?</b> Complete. Cleaning did not significantly improve automated staging (Δκ = 0.06, p = 0.33), but it removed a heartbeat confound the classifier relied on and was required for valid slow-wave detection</li>
+          <li><b>01b · Classifying N1.</b> Complete. No feature method improved the hardest stage significantly; tuning the decision threshold trades N1 for wake and N2 accuracy</li>
+          <li><b>02 · Alpha before and after a task.</b> Complete. Alpha frequency unchanged; alpha power higher in the second rest run (no control condition, so not attributed to the task)</li>
+          <li><b>03 · Sleep across a session.</b> Complete. Among participants who slept, sleep did not change across runs; the "rest" runs were mostly sleep</li>
+          <li><b>04 · Does it replicate?</b> In progress. Pre-registered 27 Oct 2026; independent data from NIH (overnight) and Geneva (nap), processed one participant at a time</li>
         </ul>
         <div class="links">
           <a class="btn" href="https://github.com/besrabhagyashree/sleep-eeg-fmri">
@@ -400,15 +409,15 @@ footer .inner { padding-block: 1.75rem; display: flex; flex-wrap: wrap; justify-
       <div class="build-side">
         <h4>Progress</h4>
         <ol class="track">
-          <li><span class="st done">✓</span><b>Plan pre-registered</b><span class="d">Hypotheses, exclusions and tests fixed before results</span></li>
-          <li><span class="st done">✓</span><b>Pipeline built and validated</b><span class="d">Cleaning, quality control and features, tested on synthetic and real data</span></li>
-          <li><span class="st done">✓</span><b>Processing participants</b><span class="d"><span id="rp-count">23 of 33</span> through cleaning and quality control<span id="rp-excl"></span><span class="meter" aria-hidden="true"><i id="rp-bar" style="width: 70%"></i></span></span></li>
-          <li><span class="st done">✓</span><b>Main comparison</b><span class="d">Pre-registered tests run and independently audited; results in the repository</span></li>
-          <li><span class="st run">5</span><b>Write-up and preprint</b><span class="d">Results written up; manuscript for bioRxiv next</span></li>
+          <li><span class="st done">✓</span><b>Studies 01–03</b><span class="d">Pre-registered, run and reported on OpenNeuro ds003768</span></li>
+          <li><span class="st done">✓</span><b>Independent data found</b><span class="d">Two more EEG-fMRI sleep datasets verified: NIH ds005127 and Geneva ds003574</span></li>
+          <li><span class="st done">✓</span><b>Replication pre-registered</b><span class="d">Study 04 plan published before any new EEG was processed</span></li>
+          <li><span class="st run">4</span><b>Pilot</b><span class="d">Processing NIH participants one at a time to validate the pipeline on the new data</span></li>
+          <li><span class="st">5</span><b>Replication and write-up</b><span class="d">Full sample, pooled analysis, then a preprint</span></li>
         </ol>
         <h4>Stack</h4>
         <ul class="chips"><li>Python</li><li>MNE-Python</li><li>PyPREP</li><li>Autoreject</li><li>YASA</li><li>scikit-learn</li><li>SciPy</li><li>pytest</li><li>GitHub Actions</li></ul>
-        <p class="updated" id="rp-updated">Updated 22 Oct 2026</p>
+        <p class="updated" id="rp-updated">Updated 27 Oct 2026</p>
       </div>
     </article>
   </div>
@@ -528,22 +537,15 @@ footer .inner { padding-block: 1.75rem; display: flex; flex-wrap: wrap; justify-
 </footer>
 
 <script>
-// Live research progress: read the participant table and its last commit from the public study repository.
-// The numbers written in the page above are the fallback when GitHub cannot be reached.
+// Live research progress: the date of the latest commit to the public study repository.
+// The date written in the page above is the fallback when GitHub cannot be reached.
 (async function researchProgress() {
-  const repo = "besrabhagyashree/sleep-eeg-fmri", path = "studies/01-preprocessing-ablation/results/participants_table.csv";
+  const repo = "besrabhagyashree/sleep-eeg-fmri";
   try {
-    const csv = await (await fetch(`https://raw.githubusercontent.com/${repo}/main/${path}`, { cache: "no-store" })).text();
-    const status = csv.trim().split(String.fromCharCode(10)).slice(1).map(line => (line.trim().split(",")[1] || ""));
-    const total = status.length, done = status.filter(st => st !== "processing").length, excl = status.filter(st => st.startsWith("excluded")).length;
-    if (!total) return;
-    document.getElementById("rp-count").textContent = `${done} of ${total}`;
-    document.getElementById("rp-excl").textContent = excl ? ` (${excl} excluded by the quality rules)` : "";
-    document.getElementById("rp-bar").style.width = `${Math.round(100 * done / total)}%`;
-    const commits = await (await fetch(`https://api.github.com/repos/${repo}/commits?path=${encodeURIComponent(path)}&per_page=1`)).json();
+    const commits = await (await fetch(`https://api.github.com/repos/${repo}/commits?per_page=1`)).json();
     const when = new Date(commits[0].commit.committer.date);
-    document.getElementById("rp-updated").textContent = "Updated " + when.toLocaleString("en-GB", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit", timeZone: "Asia/Kolkata" }) + " IST · live";
-  } catch (e) { /* keep the fallback numbers */ }
+    document.getElementById("rp-updated").textContent = "Repository updated " + when.toLocaleString("en-GB", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit", timeZone: "Asia/Kolkata" }) + " IST · live";
+  } catch (e) { /* keep the fallback date */ }
 })();
 
 // Copy email; fall back to selecting the text if the clipboard is refused.
