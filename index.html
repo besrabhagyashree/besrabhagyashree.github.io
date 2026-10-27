@@ -178,6 +178,7 @@ section.block + section.block .inner { border-top: 1px solid var(--rule); }
 .build-side p { font-size: .92rem; color: var(--muted); }
 @media (max-width: 900px) { .build { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 600px) { .features { grid-template-columns: minmax(0, 1fr); } .stats dt { font-size: 1.9rem; } .build-main, .build-side { padding: 1.5rem; } }
+@media (max-width: 480px) { .stats { grid-template-columns: minmax(0, 1fr); gap: .7rem; } .stats > div { display: grid; grid-template-columns: 3.2rem minmax(0, 1fr); align-items: baseline; gap: .6rem; } .stats dd { margin: 0; } }
 
 section[id] { scroll-margin-top: 4.5rem; }
 /* current research */
@@ -365,7 +366,7 @@ footer .inner { padding-block: 1.75rem; display: flex; flex-wrap: wrap; justify-
         <div class="kicker">Current research</div>
         <h2 id="h-research">Does cleaning EEG recorded inside an MRI scanner help a computer read sleep?</h2>
       </div>
-      <p>A series of open, pre-registered studies on public sleep EEG-fMRI data, built step by step in the open. Every method is a published one, and every change to a plan is dated before results.</p>
+      <p>A series of open, pre-registered studies on public sleep EEG-fMRI data, built step by step in the open. Every method is a published one, and every change to a plan is dated before results. I set the questions and rules and review every decision; the code and analyses are written with an AI coding assistant (Claude Code) under my direction.</p>
     </div>
     <article class="build">
       <div class="build-main">
@@ -381,7 +382,7 @@ footer .inner { padding-block: 1.75rem; display: flex; flex-wrap: wrap; justify-
         <dl class="stats">
           <div><dt>5</dt><dd>pre-registered studies: 4 complete, 1 in progress</dd></div>
           <div><dt>3</dt><dd>sites: Penn State, NIH and Geneva (OpenNeuro)</dd></div>
-          <div><dt>67</dt><dd>participants with EEG recorded inside the scanner</dd></div>
+          <div><dt>29</dt><dd>participants analysed so far, 34 more in the replication</dd></div>
         </dl>
         <ul class="features">
           <li><b>Artefact removal</b>: scanner gradient and heartbeat by average subtraction, two heartbeat detectors</li>
@@ -393,18 +394,19 @@ footer .inner { padding-block: 1.75rem; display: flex; flex-wrap: wrap; justify-
         </ul>
         <h4 class="studies-h">Studies so far</h4>
         <ul class="features">
-          <li><b>01 · Does cleaning matter?</b> Complete. Cleaning did not significantly improve automated staging (Δκ = 0.06, p = 0.33), but it removed a heartbeat confound the classifier relied on and was required for valid slow-wave detection</li>
+          <li><b>01 · Does cleaning matter?</b> Complete. Cleaning did not significantly improve automated staging (Δκ = 0.06, p = 0.33). Exploratory analyses suggest that without it the classifier partly tracked heart rate, and that slow-wave detection was unusable on raw data</li>
           <li><b>01b · Classifying N1.</b> Complete. No feature method improved the hardest stage significantly; tuning the decision threshold trades N1 for wake and N2 accuracy</li>
           <li><b>02 · Alpha before and after a task.</b> Complete. Alpha frequency unchanged; alpha power higher in the second rest run (no control condition, so not attributed to the task)</li>
-          <li><b>03 · Sleep across a session.</b> Complete. Among participants who slept, sleep did not change across runs; the "rest" runs were mostly sleep</li>
-          <li><b>04 · Does it replicate?</b> In progress. Pre-registered 27 Oct 2026; independent data from NIH (overnight) and Geneva (nap), processed one participant at a time</li>
+          <li><b>03 · Sleep across a session.</b> Complete. Among the 14 participants selected as sleepers, sleep did not change significantly across runs, and even their "rest" runs were mostly sleep (a selection that depends on the outcome, stated in the study)</li>
+          <li><b>04 · Does it replicate?</b> In progress. Pre-registered 27 Oct 2026; independent raw data from NIH (overnight) and cleaned data from Geneva (nap). The pilot caught a scanner-artefact fault, fixed and verified before the full run</li>
         </ul>
         <div class="links">
           <a class="btn" href="https://github.com/besrabhagyashree/sleep-eeg-fmri">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
             Code &amp; results
           </a>
-          <a class="btn ghost" href="https://github.com/besrabhagyashree/sleep-eeg-fmri/blob/main/studies/01-preprocessing-ablation/PREREGISTRATION.md">Pre-registration</a>
+          <a class="btn ghost" href="https://github.com/besrabhagyashree/sleep-eeg-fmri/tree/main/studies/04-multisite-replication">Study 04 (live)</a>
+          <a class="btn ghost" href="https://github.com/besrabhagyashree/sleep-eeg-fmri/blob/main/studies/04-multisite-replication/PREREGISTRATION.md">Pre-registration</a>
         </div>
       </div>
       <div class="build-side">
@@ -413,8 +415,9 @@ footer .inner { padding-block: 1.75rem; display: flex; flex-wrap: wrap; justify-
           <li><span class="st done">✓</span><b>Studies 01–03</b><span class="d">Pre-registered, run and reported on OpenNeuro ds003768</span></li>
           <li><span class="st done">✓</span><b>Independent data found</b><span class="d">Two more EEG-fMRI sleep datasets verified: NIH ds005127 and Geneva ds003574</span></li>
           <li><span class="st done">✓</span><b>Replication pre-registered</b><span class="d">Study 04 plan published before any new EEG was processed</span></li>
-          <li><span class="st run">4</span><b>Pilot</b><span class="d">Processing NIH participants one at a time to validate the pipeline on the new data<span class="pct"><b id="pg-pilot-pct">62%</b> · <span id="pg-pilot-now">9 runs planned</span></span><span class="meter" aria-hidden="true"><i id="pg-pilot-bar" style="width: 62%"></i></span></span></li>
-          <li><span class="st">5</span><b>Replication and write-up</b><span class="d">Full sample, pooled analysis, then a preprint<span class="pct"><b id="pg-rep-pct">0%</b> · <span id="pg-rep-now">0 of 34 new participants processed</span></span><span class="meter" aria-hidden="true"><i id="pg-rep-bar" style="width: 0%"></i></span></span></li>
+          <li><span class="st done" id="pg-pilot-st">✓</span><b>Pilot</b><span class="d">Two NIH participants end to end; a scanner-artefact fault caught, fixed and verified (<a href="https://github.com/besrabhagyashree/sleep-eeg-fmri/blob/main/studies/04-multisite-replication/PREREGISTRATION.md#amendment-2--scanner-artefact-template-length">amendment 2</a>)<span class="pct"><b id="pg-pilot-pct">100%</b> · <span id="pg-pilot-now">done</span></span><span class="meter" aria-hidden="true"><i id="pg-pilot-bar" style="width: 100%"></i></span></span></li>
+          <li><span class="st run" id="pg-rep-st">5</span><b>Full run</b><span class="d">All NIH and Geneva participants, processed one at a time; quality checks only<span class="pct"><b id="pg-rep-pct">6%</b> · <span id="pg-rep-now">2 of 34 new participants processed</span></span><span class="meter" aria-hidden="true"><i id="pg-rep-bar" style="width: 6%"></i></span></span></li>
+          <li><span class="st next">6</span><b>Analysis and write-up</b><span class="d">Hypothesis tests unlock once every participant is processed, then a preprint</span></li>
         </ol>
         <h4>Stack</h4>
         <ul class="chips"><li>Python</li><li>MNE-Python</li><li>PyPREP</li><li>Autoreject</li><li>YASA</li><li>scikit-learn</li><li>SciPy</li><li>pytest</li><li>GitHub Actions</li></ul>
@@ -546,10 +549,15 @@ footer .inner { padding-block: 1.75rem; display: flex; flex-wrap: wrap; justify-
   const bar = (id, pct) => { const el = document.getElementById(id); if (el) el.style.width = `${Math.max(0, Math.min(100, pct))}%`; };
   try {
     const p = await (await fetch(`https://raw.githubusercontent.com/${repo}/main/studies/04-multisite-replication/progress.json`, { cache: "no-store" })).json();
+    const step = (id, state, label) => { const el = document.getElementById(id); if (el) { el.className = `st ${state}`; el.textContent = label; } };
+    const pilotDone = p.pilot.pct >= 100;
     set("pg-pilot-pct", `${Math.round(p.pilot.pct)}%`); bar("pg-pilot-bar", p.pilot.pct);
-    set("pg-pilot-now", p.pilot.now === "paused" ? `${p.pilot.runs_done} of ${p.pilot.runs_planned} runs` : p.pilot.now);
-    set("pg-rep-pct", `${Math.round(p.replication.pct)}%`); bar("pg-rep-bar", p.replication.pct);
-    set("pg-rep-now", `${p.replication.participants_processed} of ${p.replication.participants_total} new participants processed`);
+    set("pg-pilot-now", pilotDone ? "done" : p.pilot.now);
+    step("pg-pilot-st", pilotDone ? "done" : "run", pilotDone ? "✓" : "4");
+    const rep = p.replication, running = rep.now && rep.now !== "paused";
+    set("pg-rep-pct", `${Math.round(rep.pct)}%`); bar("pg-rep-bar", rep.pct);
+    set("pg-rep-now", `${rep.participants_processed} of ${rep.participants_total} new participants processed` + (running ? ` · now: ${rep.now}` : ""));
+    step("pg-rep-st", rep.pct >= 100 ? "done" : pilotDone ? "run" : "next", rep.pct >= 100 ? "✓" : "5");
   } catch (e) { /* keep the fallback numbers */ }
   try {
     const commits = await (await fetch(`https://api.github.com/repos/${repo}/commits?per_page=1`)).json();
