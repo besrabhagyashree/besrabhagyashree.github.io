@@ -250,7 +250,8 @@ footer .inner { padding-block: 1.75rem; display: flex; flex-wrap: wrap; justify-
     <ul>
       <li class="opt"><a href="#focus">Focus</a></li>
       <li class="opt"><a href="#method">Approach</a></li>
-      <li class="opt"><a href="#research">Research</a></li>
+      <li class="opt"><a href="#research">Sleep EEG</a></li>
+      <li class="opt"><a href="#connectome">Connectome</a></li>
       <li class="opt"><a href="#build">Build</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -427,6 +428,66 @@ footer .inner { padding-block: 1.75rem; display: flex; flex-wrap: wrap; justify-
   </div>
 </section>
 
+<section class="block" id="connectome" aria-labelledby="h-connectome">
+  <div class="inner">
+    <div class="head">
+      <div>
+        <div class="kicker">Current research</div>
+        <h2 id="h-connectome">Is it the fly brain's wiring that sends each sense to the right place?</h2>
+      </div>
+      <p>The complete wiring diagram of the adult fruit fly brain is now used as a ready-made network for simulations and AI models. I test whether its exact wiring, or just its connection statistics, decides where each sense reaches the neurons that drive the body. Every method is a published one. I set the questions and review every decision; the code and analyses are written with an AI coding assistant (Claude Code) under my direction.</p>
+    </div>
+    <article class="build">
+      <div class="build-main">
+        <div class="build-top">
+          <h3>Fruit fly connectome: sensory routing under null models</h3>
+          <span class="live"><span class="dot" aria-hidden="true"></span>In progress</span>
+        </div>
+        <p class="build-lead">
+          Seven senses are driven through a calibrated model of all 139,255 neurons, and the signal is read out on the
+          1,305 descending neurons that connect brain to body. The real brain is compared with randomised brains that keep
+          every neuron's number of connections, including new randomisations that lock the brain's sensory and motor edges
+          and shuffle only the wiring inside.
+        </p>
+        <dl class="stats">
+          <div><dt>139k</dt><dd>neurons in the FlyWire v783 connectome, 2.7M connections</dd></div>
+          <div><dt>140</dt><dd>randomised brains simulated across four null models</dd></div>
+          <div><dt>99.8%</dt><dd>of descending neurons matched to the Stürner et al. 2025 atlas</dd></div>
+        </dl>
+        <h4 class="studies-h">Findings so far</h4>
+        <ul class="features">
+          <li><b>The edges set the focus.</b> Standard randomisation spreads each sense over 6–7× more descending neurons. Locking the sensory and descending connections and shuffling only the inside keeps ~99.5% of the focus (70 brains), consistent with Park 2026</li>
+          <li><b>The inside sets the destination.</b> In progress. Simulated activity agrees with Stürner's structural map at ρ = 0.65 in the real brain, ~0.51 after inside-only shuffling and ~0.07 after standard shuffling</li>
+          <li><b>Senses differ.</b> Touch, which has direct routes, keeps its match; smell, humidity and photoreceptors, which pass through more inside layers, lose up to half of it</li>
+          <li><b>Reproduced first.</b> The Shiu et al. 2024 whole-brain spiking model, r = 0.99 against the published rates</li>
+        </ul>
+        <div class="links">
+          <a class="btn" href="https://github.com/besrabhagyashree/fly-connectome-routing">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+            Code &amp; results
+          </a>
+          <a class="btn ghost" href="https://github.com/besrabhagyashree/fly-connectome-routing/blob/main/LITERATURE_GAPS.md">Literature gaps</a>
+          <a class="btn ghost" href="https://github.com/besrabhagyashree/fly-connectome-routing#pipeline">Pipeline</a>
+        </div>
+      </div>
+      <div class="build-side">
+        <h4>Progress</h4>
+        <ol class="track">
+          <li><span class="st done">✓</span><b>Inside-only randomisation</b><span class="d">35 + 35 brains: focus survives, so it is set at the edges</span></li>
+          <li><span class="st done">✓</span><b>Shortcut statistics</b><span class="d">Direct sense-to-descending routes per sense and per null model</span></li>
+          <li><span class="st done">✓</span><b>Neuron identities</b><span class="d">1,303 of 1,305 descending neurons matched to published types and behaviours</span></li>
+          <li><span class="st run">4</span><b>Simulation vs structural map</b><span class="d">Agreement with Stürner's map, real vs randomised brains<span class="pct"><b>83%</b> · <span>58 of 70 brains simulated</span></span><span class="meter" aria-hidden="true"><i style="width: 83%"></i></span></span></li>
+          <li><span class="st next">5</span><b>Spiking-model test</b><span class="d">Same randomisation in the Shiu et al. spiking model</span></li>
+          <li><span class="st next">6</span><b>Cross-behaviour leakage and write-up</b><span class="d">Do randomised brains mix up behaviours? Then a preprint</span></li>
+        </ol>
+        <h4>Stack</h4>
+        <ul class="chips"><li>Python</li><li>NumPy</li><li>SciPy</li><li>pandas</li><li>Brian2</li><li>network null models</li></ul>
+        <p class="updated" id="fc-updated">Updated 27 Oct 2026</p>
+      </div>
+    </article>
+  </div>
+</section>
+
 <section class="block" id="build" aria-labelledby="h-build">
   <div class="inner">
     <div class="head">
@@ -563,6 +624,15 @@ footer .inner { padding-block: 1.75rem; display: flex; flex-wrap: wrap; justify-
     const commits = await (await fetch(`https://api.github.com/repos/${repo}/commits?per_page=1`)).json();
     const when = new Date(commits[0].commit.committer.date);
     set("rp-updated", "Repository updated " + when.toLocaleString("en-GB", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit", timeZone: "Asia/Kolkata" }) + " IST · live");
+  } catch (e) { /* keep the fallback date */ }
+})();
+
+// Fly connectome: latest commit date of the project repository.
+(async function () {
+  try {
+    const c = await (await fetch("https://api.github.com/repos/besrabhagyashree/fly-connectome-routing/commits?per_page=1")).json();
+    const el = document.getElementById("fc-updated");
+    if (el) el.textContent = "Repository updated " + new Date(c[0].commit.committer.date).toLocaleString("en-GB", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit", timeZone: "Asia/Kolkata" }) + " IST · live";
   } catch (e) { /* keep the fallback date */ }
 })();
 
