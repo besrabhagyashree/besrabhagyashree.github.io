@@ -459,6 +459,7 @@ footer .inner { padding-block: 1.75rem; display: flex; flex-wrap: wrap; justify-
           <li><b>The edges set the focus.</b> Standard randomisation spreads each sense over 6–7× more descending neurons. Locking the sensory and descending connections and shuffling only the inside keeps ~99.5% of the focus (70 brains), consistent with Park 2026</li>
           <li><b>The inside sets the destination.</b> Simulated activity agrees with Stürner's structural map at ρ = 0.65 in the real brain, 0.51 after inside-only shuffling and 0.07 after standard shuffling; no randomised brain matches the real one (35 each)</li>
           <li><b>Senses differ.</b> Touch, which has direct routes, keeps its match; smell, humidity and photoreceptors, which pass through more inside layers, lose up to 40% of it</li>
+          <li><b>The map itself moves.</b> Stürner's flow model, rebuilt and reproduced (ρ 0.91–0.97), recomputed on every randomised brain: inside-only shuffles keep about half the real map (0.57), standard shuffles almost none (0.09). Simulation and map agree best in the real wiring (0.72 vs at most 0.64 in 70 brains)</li>
           <li><b>Reproduced first.</b> The Shiu et al. 2024 whole-brain spiking model, r = 0.99 against the published rates</li>
         </ul>
         <div class="links">
@@ -477,8 +478,8 @@ footer .inner { padding-block: 1.75rem; display: flex; flex-wrap: wrap; justify-
           <li><span class="st done">✓</span><b>Shortcut statistics</b><span class="d">Direct sense-to-descending routes per sense and per null model</span></li>
           <li><span class="st done">✓</span><b>Neuron identities</b><span class="d">1,303 of 1,305 descending neurons matched to published types and behaviours</span></li>
           <li><span class="st done">✓</span><b>Simulation vs structural map</b><span class="d">70 brains: agrees in the real brain; inside-only shuffles move where multi-layer senses land</span></li>
-          <li><span class="st run">5</span><b>Map on randomised brains</b><span class="d">Stürner's flow model rebuilt and reproduced on the real brain; now running on 70 shuffled brains</span></li>
-          <li><span class="st next">6</span><b>Scale to 200 brains</b><span class="d">The real brain beat all inside-only shuffles (p &lt; 0.05), but by ~0.5%, so 200 per type to pin the effect down</span></li>
+          <li><span class="st done">✓</span><b>Map on randomised brains</b><span class="d">Stürner's flow model reproduced, then recomputed on 70 brains: inside-only shuffles keep about half the map</span></li>
+          <li><span class="st run">6</span><b>Scale to 200 brains</b><span class="d">The real brain beat all inside-only shuffles (p &lt; 0.05), but by ~0.5%, so 200 per type to pin the effect down (overnight)</span></li>
           <li><span class="st next">7</span><b>Spiking-model test</b><span class="d">Same randomisation in the Shiu et al. spiking model</span></li>
           <li><span class="st next">8</span><b>Cross-behaviour leakage and write-up</b><span class="d">Do randomised brains mix up behaviours? Then a preprint</span></li>
         </ol>
